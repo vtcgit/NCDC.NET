@@ -25,14 +25,14 @@ namespace NCDCWebService.Models
         #endregion
 
         #region Commands
-        public static NCDCResponse<NCDCLocationTypeCollection> GetLocationTypes(string datasetName, string token, NCDCOptions options)
+        public static NCDCResponse<NCDCLocationTypeCollection> GetLocationTypes(string datasetName, string token = null, NCDCOptions options = null)
         {
-            var command = new ListLocationTypesCommand(datasetName, token, options);
+            token = token ?? NCDCUtilities.GetUnlockedToken(); var command = new ListLocationTypesCommand(datasetName, token, options);
             return NCDCCommand<NCDCLocationTypeCollection>.PerformAction(command);
         }
-        public static NCDCResponse<NCDCLocationType> GetLoctionTypeInformation(string datasetName, string locationTypeName, string token, NCDCOptions options)
+        public static NCDCResponse<NCDCLocationType> GetLoctionTypeInformation(string datasetName, string locationTypeName, string token = null, NCDCOptions options = null)
         {
-            var command = new ShowLocationTypeCommand(datasetName, locationTypeName, token, options);
+            token = token ?? NCDCUtilities.GetUnlockedToken(); var command = new ShowLocationTypeCommand(datasetName, locationTypeName, token, options);
             return NCDCCommand<NCDCLocationType>.PerformAction(command);
         }
         #endregion

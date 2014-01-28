@@ -40,34 +40,34 @@ namespace NCDCWebService.Models
         #endregion
 
         #region Commands
-        public static NCDCResponse<NCDCStationCollection> GetStations(string datasetName, string stationTypeName, string locationId, string token, NCDCOptions options)
+        public static NCDCResponse<NCDCStationCollection> GetStations(string datasetName, string stationTypeName, string locationId, string token = null, NCDCOptions options = null)
         {
-            var command = new ListStationsCommand(datasetName, stationTypeName, locationId, token, options);
+            token = token ?? NCDCUtilities.GetUnlockedToken(); var command = new ListStationsCommand(datasetName, stationTypeName, locationId, token, options);
             return NCDCCommand<NCDCStationCollection>.PerformAction(command);
         }
-        public static NCDCResponse<NCDCStationCollection> GetStations(string datasetName, string locationId, string token, NCDCOptions options)
+        public static NCDCResponse<NCDCStationCollection> GetStations(string datasetName, string locationId, string token = null, NCDCOptions options = null)
         {
-            var command = new ListStationsCommand(datasetName, locationId, token, options);
+            token = token ?? NCDCUtilities.GetUnlockedToken(); var command = new ListStationsCommand(datasetName, locationId, token, options);
             return NCDCCommand<NCDCStationCollection>.PerformAction(command);
         }
-        public static NCDCResponse<NCDCStationCollection> GetStations(string datasetName, string token, NCDCOptions options)
+        public static NCDCResponse<NCDCStationCollection> GetStations(string datasetName, string token = null, NCDCOptions options = null)
         {
-            var command = new ListStationsCommand(datasetName, token, options);
+            token = token ?? NCDCUtilities.GetUnlockedToken(); var command = new ListStationsCommand(datasetName, token, options);
             return NCDCCommand<NCDCStationCollection>.PerformAction(command);
         }
-        public static NCDCResponse<NCDCStation> GetStationInformation(string datasetName, string locationTypeName, string locationId, string stationId, string token, NCDCOptions options)
+        public static NCDCResponse<NCDCStation> GetStationInformation(string datasetName, string locationTypeName, string locationId, string stationId, string token = null, NCDCOptions options = null)
         {
-            var command = new ShowStationCommand(datasetName, locationTypeName, locationId, stationId, token, options);
+            token = token ?? NCDCUtilities.GetUnlockedToken(); var command = new ShowStationCommand(datasetName, locationTypeName, locationId, stationId, token, options);
             return NCDCCommand<NCDCStation>.PerformAction(command);
         }
-        public static NCDCResponse<NCDCStation> GetStationInformation(string datasetName, string locationId, string stationId, string token, NCDCOptions options)
+        public static NCDCResponse<NCDCStation> GetStationInformation(string datasetName, string locationId, string stationId, string token = null, NCDCOptions options = null)
         {
-            var command = new ShowStationCommand(datasetName, locationId, stationId, token, options);
+            token = token ?? NCDCUtilities.GetUnlockedToken(); var command = new ShowStationCommand(datasetName, locationId, stationId, token, options);
             return NCDCCommand<NCDCStation>.PerformAction(command);
         }
-        public static NCDCResponse<NCDCStation> GetStationInformation(string datasetName, string stationId, string token, NCDCOptions options)
+        public static NCDCResponse<NCDCStation> GetStationInformation(string datasetName, string stationId, string token = null, NCDCOptions options = null)
         {
-            var command = new ShowStationCommand(datasetName, stationId, token, options);
+            token = token ?? NCDCUtilities.GetUnlockedToken(); var command = new ShowStationCommand(datasetName, stationId, token, options);
             return NCDCCommand<NCDCStation>.PerformAction(command);
         }
         #endregion

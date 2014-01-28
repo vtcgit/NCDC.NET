@@ -36,23 +36,27 @@ namespace NCDCWebService.Models
         #endregion
 
         #region Commands
-        public static NCDCResponse<NCDCLocationCollection> GetLocations(string datasetName, string token, NCDCOptions options)
+        public static NCDCResponse<NCDCLocationCollection> GetLocations(string datasetName, string token = null, NCDCOptions options = null)
         {
+            token = token ?? NCDCUtilities.GetUnlockedToken();
             var command = new ListLocationsCommand(datasetName, token, options);
             return NCDCCommand<NCDCLocationCollection>.PerformAction(command);
         }
-        public static NCDCResponse<NCDCLocationCollection> GetLocations(string datasetName, string locationTypeName, string token, NCDCOptions options)
+        public static NCDCResponse<NCDCLocationCollection> GetLocations(string datasetName, string locationTypeName, string token = null, NCDCOptions options = null)
         {
+            token = token ?? NCDCUtilities.GetUnlockedToken();
             var command = new ListLocationsCommand(datasetName, locationTypeName, token, options);
             return NCDCCommand<NCDCLocationCollection>.PerformAction(command);
         }
-        public static NCDCResponse<NCDCLocation> GetLocationInformation(string datasetName, string locationTypeName, string locationId, string token, NCDCOptions options)
+        public static NCDCResponse<NCDCLocation> GetLocationInformation(string datasetName, string locationTypeName, string locationId, string token = null, NCDCOptions options = null)
         {
+            token = token ?? NCDCUtilities.GetUnlockedToken();
             var command = new ShowLocationCommand(datasetName, locationTypeName, locationId, token, options);
             return NCDCCommand<NCDCLocation>.PerformAction(command);
         }
-        public static NCDCResponse<NCDCLocation> GetLocationInformation(string datasetName, string locationId, string token, NCDCOptions options)
+        public static NCDCResponse<NCDCLocation> GetLocationInformation(string datasetName, string locationId, string token = null, NCDCOptions options = null)
         {
+            token = token ?? NCDCUtilities.GetUnlockedToken();
             var command = new ShowLocationCommand(datasetName, locationId, token, options);
             return NCDCCommand<NCDCLocation>.PerformAction(command);
         }

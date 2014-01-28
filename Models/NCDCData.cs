@@ -34,91 +34,91 @@ namespace NCDCWebService.Models
         #region Commands
 
         public static NCDCResponse<NCDCDataCollection> GetDataForLocationTypeLocationStationAndDataType(string datasetName,
-            string locationTypeId, string locationId, string stationId, string dataTypeId, string token, NCDCOptions options)
+            string locationTypeId, string locationId, string stationId, string dataTypeId, string token = null, NCDCOptions options = null)
         {
-            var command = new ListDataCommand(datasetName, locationTypeId, locationId, stationId, dataTypeId, token, options);
+            token = token ?? NCDCUtilities.GetUnlockedToken(); var command = new ListDataCommand(datasetName, locationTypeId, locationId, stationId, dataTypeId, token, options);
             return NCDCCommand<NCDCDataCollection>.PerformAction(command);
         }
-        public static NCDCResponse<NCDCDataCollection> GetDataForDataset(string datasetName, string token, NCDCOptions options)
+        public static NCDCResponse<NCDCDataCollection> GetDataForDataset(string datasetName, string token = null, NCDCOptions options = null)
         {
-            var command = new ListDataCommand(datasetName, token, options);
+            token = token ?? NCDCUtilities.GetUnlockedToken(); var command = new ListDataCommand(datasetName, token, options);
             return NCDCCommand<NCDCDataCollection>.PerformAction(command);
         }
-        public static NCDCResponse<NCDCDataCollection> GetDataForDataType(string datasetName, string dataTypeId, string token, NCDCOptions options)
+        public static NCDCResponse<NCDCDataCollection> GetDataForDataType(string datasetName, string dataTypeId, string token = null, NCDCOptions options = null)
         {
-            var command = new ListDataCommand(token, options);
+            token = token ?? NCDCUtilities.GetUnlockedToken(); var command = new ListDataCommand(token, options);
             command.BuildDatasetDataTypeUri(datasetName, dataTypeId);
             return NCDCCommand<NCDCDataCollection>.PerformAction(command);
         }
-        public static NCDCResponse<NCDCDataCollection> GetDataForLocationAndDataType(string datasetName, string locationId, string dataTypeId, string token, NCDCOptions options)
+        public static NCDCResponse<NCDCDataCollection> GetDataForLocationAndDataType(string datasetName, string locationId, string dataTypeId, string token = null, NCDCOptions options = null)
         {
-            var command = new ListDataCommand(token, options);
+            token = token ?? NCDCUtilities.GetUnlockedToken(); var command = new ListDataCommand(token, options);
             command.BuildDatasetLocationDataTypeUri(datasetName, locationId, dataTypeId);
             return NCDCCommand<NCDCDataCollection>.PerformAction(command);
         }
         public static NCDCResponse<NCDCDataCollection> GetDataForLocationStationAndDataType(string datasetName, 
-            string locationId, string stationId, string dataTypeId, string token, NCDCOptions options)
+            string locationId, string stationId, string dataTypeId, string token = null, NCDCOptions options = null)
         {
-            var command = new ListDataCommand(token, options);
+            token = token ?? NCDCUtilities.GetUnlockedToken(); var command = new ListDataCommand(token, options);
             command.BuildDatasetLocationStationDatatypeUri(datasetName, locationId, stationId, dataTypeId);
             return NCDCCommand<NCDCDataCollection>.PerformAction(command);
         }
-        public static NCDCResponse<NCDCDataCollection> GetDataForLocationAndStation(string datasetName, string locationId, string stationId, string token, NCDCOptions options)
+        public static NCDCResponse<NCDCDataCollection> GetDataForLocationAndStation(string datasetName, string locationId, string stationId, string token = null, NCDCOptions options = null)
         {
-            var command = new ListDataCommand(token, options);
+            token = token ?? NCDCUtilities.GetUnlockedToken(); var command = new ListDataCommand(token, options);
             command.BuildDatasetLocationStationUri(datasetName, locationId, stationId);
             return NCDCCommand<NCDCDataCollection>.PerformAction(command);
         }
         public static NCDCResponse<NCDCDataCollection> GetDataForLocationTypeAndDataType(string datasetName,
-            string locationTypeId, string dataTypeId, string token, NCDCOptions options)
+            string locationTypeId, string dataTypeId, string token = null, NCDCOptions options = null)
         {
-            var command = new ListDataCommand(token, options);
+            token = token ?? NCDCUtilities.GetUnlockedToken(); var command = new ListDataCommand(token, options);
             command.BuildDatasetLocationTypeDataTypesUri(datasetName, locationTypeId, dataTypeId);
             return NCDCCommand<NCDCDataCollection>.PerformAction(command);
         }
         public static NCDCResponse<NCDCDataCollection> GetDataForLocationTypeLocationAndDataType(string datasetName,
-            string locationTypeId, string locationId, string dataTypeId, string token, NCDCOptions options)
+            string locationTypeId, string locationId, string dataTypeId, string token = null, NCDCOptions options = null)
         {
-            var command = new ListDataCommand(token, options);
+            token = token ?? NCDCUtilities.GetUnlockedToken(); var command = new ListDataCommand(token, options);
             command.BuildDatasetLocationTypeLocationDataTypeUri(datasetName, locationTypeId, locationId, dataTypeId);
             return NCDCCommand<NCDCDataCollection>.PerformAction(command);
         }
         public static NCDCResponse<NCDCDataCollection> GetDataForLocationTypeLocationAndStation(string datasetName,
-            string locationTypeId, string locationId, string stationId, string token, NCDCOptions options)
+            string locationTypeId, string locationId, string stationId, string token = null, NCDCOptions options = null)
         {
-            var command = new ListDataCommand(token, options);
+            token = token ?? NCDCUtilities.GetUnlockedToken(); var command = new ListDataCommand(token, options);
             command.BuildDatasetLocationTypeLocationStationUri(datasetName, locationTypeId, locationId, stationId);
             return NCDCCommand<NCDCDataCollection>.PerformAction(command);
         }
         public static NCDCResponse<NCDCDataCollection> GetDataForLocationTypeAndLocation(string datasetName,
-            string locationTypeId, string locationId, string token, NCDCOptions options)
+            string locationTypeId, string locationId, string token = null, NCDCOptions options = null)
         {
-            var command = new ListDataCommand(token, options);
+            token = token ?? NCDCUtilities.GetUnlockedToken(); var command = new ListDataCommand(token, options);
             command.BuildDatasetLocationTypeLocationUri(datasetName, locationTypeId, locationId);
             return NCDCCommand<NCDCDataCollection>.PerformAction(command);
         }
-        public static NCDCResponse<NCDCDataCollection> GetDataForLocationType(string datasetName, string locationTypeId, string token, NCDCOptions options)
+        public static NCDCResponse<NCDCDataCollection> GetDataForLocationType(string datasetName, string locationTypeId, string token = null, NCDCOptions options = null)
         {
-            var command = new ListDataCommand(token, options);
+            token = token ?? NCDCUtilities.GetUnlockedToken(); var command = new ListDataCommand(token, options);
             command.BuildDatasetLocationTypeUri(datasetName, locationTypeId);
             return NCDCCommand<NCDCDataCollection>.PerformAction(command);
         }
         public static NCDCResponse<NCDCDataCollection> GetDataForLocation(string datasetName,
-            string locationTypeName, string locationId, string stationId, string dataTypeId, string token, NCDCOptions options)
+            string locationTypeName, string locationId, string stationId, string dataTypeId, string token = null, NCDCOptions options = null)
         {
-            var command = new ListDataCommand(token, options);
+            token = token ?? NCDCUtilities.GetUnlockedToken(); var command = new ListDataCommand(token, options);
             command.BuildDatasetLocationUri(datasetName, locationId);
             return NCDCCommand<NCDCDataCollection>.PerformAction(command);
         }
-        public static NCDCResponse<NCDCDataCollection> GetDataForStationAndDataType(string datasetName, string stationId, string dataTypeId, string token, NCDCOptions options)
+        public static NCDCResponse<NCDCDataCollection> GetDataForStationAndDataType(string datasetName, string stationId, string dataTypeId, string token = null, NCDCOptions options = null)
         {
-            var command = new ListDataCommand(token, options);
+            token = token ?? NCDCUtilities.GetUnlockedToken(); var command = new ListDataCommand(token, options);
             command.BuildDatasetStationDataTypeUri(datasetName, stationId, dataTypeId);
             return NCDCCommand<NCDCDataCollection>.PerformAction(command);
         }
-        public static NCDCResponse<NCDCDataCollection> GetDataForStation(string datasetName, string stationId, string token, NCDCOptions options)
+        public static NCDCResponse<NCDCDataCollection> GetDataForStation(string datasetName, string stationId, string token = null, NCDCOptions options = null)
         {
-            var command = new ListDataCommand(token, options);
+            token = token ?? NCDCUtilities.GetUnlockedToken(); var command = new ListDataCommand(token, options);
             command.BuildDatasetStationUri(datasetName, stationId);
             return NCDCCommand<NCDCDataCollection>.PerformAction(command);
         }

@@ -25,8 +25,9 @@ namespace NCDCWebService.Models.Collections
         {
             if (value == null || value.First == null || value.First.First == null)
                 return null;
-
-            return JsonConvert.DeserializeObject<NCDCDatasetCollection>(value.First.First.ToString());
+            var stringValue = value.First.First.ToString();
+            var obj = JsonConvert.DeserializeObject<NCDCDatasetCollection>(stringValue);
+            return obj;
         }
 
         #region Converter
@@ -40,32 +41,39 @@ namespace NCDCWebService.Models.Collections
             public override object ReadJson(JsonReader reader, Type objectType, object existingValue, JsonSerializer serializer)
             {
                 NCDCDatasetCollection result = new NCDCDatasetCollection();
-
                 while (reader.Read())
                 {
-                    if (reader.TokenType == JsonToken.StartObject)
+                    try
                     {
-                        result.Add(serializer.Deserialize<NCDCDataset>(reader));
-                    }
-                    else if (reader.TokenType == JsonToken.PropertyName)
-                    {
-                        switch (reader.Value.ToString())
+                        if (reader.TokenType == JsonToken.StartObject)
                         {
-                            case "@totalCount":
-                                reader.Read();
-                                result.ItemCount = reader.Value.ToString();
-                                break;
-                            case "@pageCount":
-                                reader.Read();
-                                result.PageCount = reader.Value.ToString();
-                                break;
-                            case "@page":
-                                reader.Read();
-                                result.CurrentPage = reader.Value.ToString();
-                                break;
-                            default:
-                                break;
+                            var deserialize = serializer.Deserialize<NCDCDataset>(reader);
+                            result.Add(deserialize);
                         }
+                        else if (reader.TokenType == JsonToken.PropertyName)
+                        {
+                            switch (reader.Value.ToString())
+                            {
+                                case "@totalCount":
+                                    reader.Read();
+                                    result.ItemCount = reader.Value.ToString();
+                                    break;
+                                case "@pageCount":
+                                    reader.Read();
+                                    result.PageCount = reader.Value.ToString();
+                                    break;
+                                case "@page":
+                                    reader.Read();
+                                    result.CurrentPage = reader.Value.ToString();
+                                    break;
+                                default:
+                                    break;
+                            }
+                        }
+                    }
+                    catch (Exception e)
+                    {
+
                     }
                 }
 

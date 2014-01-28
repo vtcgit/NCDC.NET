@@ -34,13 +34,15 @@ namespace NCDCWebService.Models
         #endregion
 
         #region Commands
-        public static NCDCResponse<NCDCDatasetCollection> GetDataSets(string token, NCDCOptions options)
+        public static NCDCResponse<NCDCDatasetCollection> GetDataSets(string token = null, NCDCOptions options = null)
         {
+            token = token ?? NCDCUtilities.GetUnlockedToken();
             var command = new ListDatasetsCommand(token, options);
             return NCDCCommand<NCDCDatasetCollection>.PerformAction(command);
         }
-        public static NCDCResponse<NCDCDataset> GetDatasetInformation(string datasetName, string token, NCDCOptions options)
+        public static NCDCResponse<NCDCDataset> GetDatasetInformation(string datasetName, string token = null, NCDCOptions options = null)
         {
+            token = token ?? NCDCUtilities.GetUnlockedToken();
             var command = new ShowDatasetCommand(datasetName, token, options);
             return NCDCCommand<NCDCDataset>.PerformAction(command);
         }
