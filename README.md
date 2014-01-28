@@ -7,7 +7,7 @@ The design of NCDC.NET is similar to Twitterizer (located [here](https://github.
 ## Installation
 1. `git clone` to your machine
 2. Add as a project reference using the `*.csproj` file	
-	- Build the project add the `*.dll`
+	- Alternatively, Build the project add the `*.dll`
 
 ## Usage
 Here are a few examples utilizing the library. There are many others
